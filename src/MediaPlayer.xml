@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="raze.mediaplayer.MediaPlayer" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Media Player</name>
+    <description>A Media Player using ArtPlayer.js library to stream .mp4, .ogg,.webm and Hls(.m3u8)</description>
+    <studioProCategory>Images, videos &amp; files</studioProCategory>
+    <!-- <helpUrl>https://github.com/RazeViana/MediaPlayer</helpUrl> -->
+    <icon/>
+    <properties>
+       <!-- Main Tab -->
+        <propertyGroup caption="Media Player">
+
+            <!-- Config -->
+
+            <propertyGroup caption="Configuration">
+                <property key="MediaURL" type="expression" required="true">
+                    <caption>Source URL</caption>
+                    <description>The URL of the video you want to play. Only direct links to media files are accepted e.g. .mp4 and .m3u8</description>
+                    <returnType type="String" />
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <!-- Looks Tab -->
+
+        <propertyGroup caption="Looks">
+            <propertyGroup caption="Player Design">
+                <property key="PosterURL" type="expression" required="false">
+                    <caption>Poster Source URL</caption>
+                    <description>A URL of an image that is used as a background of the player. The poster effect can only be seen before the video is played</description>
+                    <returnType type="String" />
+                </property>
+                <property key="PlayerTheme" type="expression" defaultValue="#000000">
+                    <caption>Player Theme</caption>
+                    <description>Sets the theme of the player. Uses hex color codes</description>
+                    <returnType type="String" />
+                </property>
+                <property key="PauseStateLogo" type="image" required="false">
+                    <caption>Pause Logo</caption>
+                    <description>The logo that is shown in the pause state of the player</description>
+                </property>
+                <property key="LoadingStateAnim" type="image" required="false">
+                    <caption>Loading Animation</caption>
+                    <description>The animation that is shown when the player is loading</description>
+                </property>
+                <property key="LoadingStateAnimWidth" type="integer" defaultValue="70"> 
+                    <caption>Loading Animation Width</caption>
+                    <description>Width in pixels of the loading animation</description>
+                </property>
+                <property key="LoadingStateAnimHeight" type="integer" defaultValue="70"> 
+                    <caption>Loading Animation Height</caption>
+                    <description>Height in pixels of the loading Animation</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>
