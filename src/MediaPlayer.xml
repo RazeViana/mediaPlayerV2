@@ -9,21 +9,55 @@
     <!-- <helpUrl>https://github.com/RazeViana/MediaPlayer</helpUrl> -->
     <icon/>
     <properties>
+
        <!-- Main Tab -->
         <propertyGroup caption="Media Player">
 
             <!-- Config -->
-
             <propertyGroup caption="Configuration">
                 <property key="MediaURL" type="expression" required="true">
                     <caption>Source URL</caption>
                     <description>The URL of the video you want to play. Only direct links to media files are accepted e.g. .mp4 and .m3u8</description>
                     <returnType type="String" />
                 </property>
+                <property key="IntroStart" type="expression" defaultValue="0"> 
+                    <caption>Intro Start Frame</caption>
+                    <description>The start of the intro</description>
+                    <returnType type="String" />
+                </property>
+                <property key="IntroEnd" type="expression" defaultValue="0"> 
+                    <caption>Intro End Frame</caption>
+                    <description>The end of the intro</description>
+                    <returnType type="String" />
+                </property>
+                <property key="OutroStart" type="expression" defaultValue="0"> 
+                    <caption>Outro Start Frame</caption>
+                    <description>The start of the outro</description>
+                    <returnType type="String" />
+                </property>
+                <property key="OutroEnd" type="expression" defaultValue="0"> 
+                    <caption>Outro End Frame</caption>
+                    <description>The end of the outro</description>
+                    <returnType type="String" />
+                </property>
             </propertyGroup>
-        </propertyGroup>
-        <!-- Looks Tab -->
 
+            <!-- User Settings -->
+            <propertyGroup caption="User Player Configuration">
+                <property key="UserEpisodeGuid" type="expression" required="true"> 
+                    <caption>Episode Guid</caption>
+                    <description>The Guid of the Episode Object - Used for updating user playback preferances</description>
+                    <returnType type="String" />
+                </property>
+                <property key="LastFrameWatched" type="expression" defaultValue="0"> 
+                    <caption>Playback Continuation</caption>
+                    <description>The timestamp in seconds of where to start the playback</description>
+                    <returnType type="String" />
+                </property>
+            </propertyGroup>  
+        </propertyGroup>
+        
+        <!-- Looks Tab -->
         <propertyGroup caption="Looks">
             <propertyGroup caption="Player Design">
                 <property key="PosterURL" type="expression" required="false">

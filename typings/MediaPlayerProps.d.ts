@@ -12,6 +12,12 @@ export interface MediaPlayerContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     MediaURL: DynamicValue<string>;
+    IntroStart: DynamicValue<string>;
+    IntroEnd: DynamicValue<string>;
+    OutroStart: DynamicValue<string>;
+    OutroEnd: DynamicValue<string>;
+    UserEpisodeGuid: DynamicValue<string>;
+    LastFrameWatched: DynamicValue<string>;
     PosterURL?: DynamicValue<string>;
     PlayerTheme: DynamicValue<string>;
     PauseStateLogo?: DynamicValue<WebImage>;
@@ -30,6 +36,12 @@ export interface MediaPlayerPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     MediaURL: string;
+    IntroStart: string;
+    IntroEnd: string;
+    OutroStart: string;
+    OutroEnd: string;
+    UserEpisodeGuid: string;
+    LastFrameWatched: string;
     PosterURL: string;
     PlayerTheme: string;
     PauseStateLogo: { type: "static"; imageUrl: string; } | { type: "dynamic"; entity: string; } | null;

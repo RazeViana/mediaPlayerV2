@@ -1,33 +1,47 @@
 import { createElement, useRef, useEffect, ReactElement } from "react";
-import Hls from "hls.js";
+import { commit, playM3u8 } from "src/utils/Utils";
 import Artplayer from "artplayer";
 
-function playM3u8(video: any, url: any, art: any): any {
-    if (Hls.isSupported()) {
-        if (art.hls) {
-            art.hls.destroy();
-        }
-        const hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        art.hls = hls;
-        art.on("destroy", () => hls.destroy());
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = url;
-    } else {
-        art.notice.show = "Unsupported playback format: m3u8";
-    }
-}
-
-export default function Player({ option, getInstance, ...rest }: any): ReactElement {
+export default function Player({ option, getInstance, customOption, ...rest }: any): ReactElement {
     const artRef = useRef<HTMLDivElement>(null!);
 
     useEffect(() => {
+        let lastFrameIntervalRunning = false;
+        let lastFrameIntervalId: any;
+
         const art = new Artplayer({
             ...option,
             container: artRef.current,
             customType: {
                 m3u8: playM3u8
+            }
+        });
+
+        // Commits latest frame to MxObject
+        function updateLastFrameWatched(): void {
+            if (lastFrameIntervalRunning === false) {
+                lastFrameIntervalRunning = true;
+                const intervalId = setInterval(() => {
+                    if (art.playing && customOption.userEpisodeGuid) {
+                        lastFrameIntervalId = intervalId;
+                        commit(customOption.userEpisodeGuid, "LastFrameWatched", Math.round(art.currentTime));
+                    } else {
+                        lastFrameIntervalRunning = false;
+                        clearInterval(intervalId);
+                    }
+                }, 3000);
+            }
+        }
+
+        art.on("video:timeupdate", () => {
+            updateLastFrameWatched();
+        });
+
+        art.on("destroy", () => {
+            if (lastFrameIntervalRunning === true) {
+                clearInterval(lastFrameIntervalId);
+                lastFrameIntervalId = null;
+                console.log("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM");
             }
         });
 
@@ -40,7 +54,7 @@ export default function Player({ option, getInstance, ...rest }: any): ReactElem
                 art.destroy(false);
             }
         };
-    }, [option, getInstance]);
+    }, [option, customOption, getInstance]);
 
     return <div ref={artRef} {...rest}></div>;
 }

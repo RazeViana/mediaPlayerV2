@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "@mendix/pluggable-widgets-tools": "^9.18.0",
-    "@types/big.js": "^6.0.2"
+    "@types/big.js": "^6.0.2",
+    "@types/node": "^20.8.10"
   },
   "dependencies": {
     "artplayer": "^5.0.9",

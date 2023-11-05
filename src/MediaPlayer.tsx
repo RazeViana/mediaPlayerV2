@@ -48,10 +48,13 @@ export function MediaPlayer(props: MediaPlayerContainerProps): ReactElement {
                         }
                     ]
                 }}
-                style={{
-                    width: "600px",
-                    height: "400px",
-                    margin: "60px auto 0"
+                customOption={{
+                    userEpisodeGuid: isAvailable(props.UserEpisodeGuid) ? props.UserEpisodeGuid.value : "",
+                    lastFrameWatched: isAvailable(props.LastFrameWatched) ? props.LastFrameWatched.value : "",
+                    introStart: isAvailable(props.IntroStart) ? props.IntroStart.value : "",
+                    introEnd: isAvailable(props.IntroEnd) ? props.IntroEnd.value : "",
+                    outroStart: isAvailable(props.OutroStart) ? props.OutroStart.value : "",
+                    outroEnd: isAvailable(props.OutroEnd) ? props.OutroEnd.value : ""
                 }}
                 getInstance={(art: Artplayer) => console.log(art)}
             />
