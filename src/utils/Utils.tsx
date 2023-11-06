@@ -41,13 +41,10 @@ export function playM3u8(video: any, url: any, art: any): any {
 
 // Calls MF in Mendix and commits
 export function commit(ObjGuid: string, attribute: string, value: number): void {
-    console.log("GUID: " + ObjGuid + " attribute: " + attribute + " value: " + value);
-    // eslint-disable-next-line no-undef
     mx.data.get({
         guid: ObjGuid,
         callback(obj: any) {
             obj.set(attribute, value);
-            // eslint-disable-next-line no-undef
             mx.data.action({
                 params: {
                     applyto: "selection",

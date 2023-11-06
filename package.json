@@ -10,7 +10,7 @@
   },
   "license": "Apache-2.0",
   "config": {
-    "projectPath": "C:/Mendix/Abyss-main",
+    "projectPath": "//Volumes/[C] Windows 10//Mendix//Abyss-main",
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },

@@ -33,7 +33,7 @@ export function MediaPlayer(props: MediaPlayerContainerProps): ReactElement {
                             html: "Auto Skip Intro",
                             icon: `<img width="22" heigth="22" style="filter: brightness(0) invert(1);" 
                                 src="${AutoSkipImage.imagedata}">`,
-                            tooltip: getOrCreateLocalStorage().autoSkip === false ? "Off" : "On",
+                            tooltip: getOrCreateLocalStorage().autoSkip === false ? "OFF" : "ON",
                             switch: getOrCreateLocalStorage().autoSkip,
                             onSwitch(item: any) {
                                 item.tooltip = item.switch ? "OFF" : "ON";
