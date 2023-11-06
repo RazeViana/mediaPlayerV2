@@ -140,6 +140,10 @@ export default function Player({ option, getInstance, customOption, ...rest }: a
             }
         }
 
+        art.on("ready", () => {
+            art.seek = customOption.lastFrameWatched;
+        });
+
         art.on("video:timeupdate", () => {
             updateLastFrameWatched();
             skipIntroOrOutro();
