@@ -20,6 +20,20 @@ export function MediaPlayer(props: MediaPlayerContainerProps): ReactElement {
                     setting: true,
                     hotkey: true,
                     pip: false,
+                    subtitle: {
+                        url: isAvailable(props.SubtitleURL) ? (props.SubtitleURL?.value as string) : "",
+                        type: "vtt",
+                        encoding: "utf-8",
+                        escape: false,
+                        style: {
+                            color: "#FFFFFF",
+                            fontSize: "26px",
+                            lineHeight: "normal",
+                            textShadow: "#000000 0px 0px 7px",
+                            fontFamily: "Helvetica Nueue,Helvetica,Arial,sans-serif",
+                            fontWeight: "bolder"
+                        }
+                    },
                     icons: {
                         state: `<img src=${isAvailable(props.PauseStateLogo) ? props.PauseStateLogo?.value?.uri : ""}>`,
                         loading: `<img width=${

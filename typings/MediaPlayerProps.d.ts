@@ -12,6 +12,7 @@ export interface MediaPlayerContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     MediaURL: DynamicValue<string>;
+    SubtitleURL?: DynamicValue<string>;
     IntroStart: DynamicValue<string>;
     IntroEnd: DynamicValue<string>;
     OutroStart: DynamicValue<string>;
@@ -36,6 +37,7 @@ export interface MediaPlayerPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     MediaURL: string;
+    SubtitleURL: string;
     IntroStart: string;
     IntroEnd: string;
     OutroStart: string;

@@ -140,8 +140,21 @@ export default function Player({ option, getInstance, customOption, ...rest }: a
             }
         }
 
+        // Function to calculate font size based on viewport width
+        function calculateResponsiveFontSize(): string {
+            const vw = Math.max(art.rect.width);
+            return `${Math.max(16, vw * 0.029)}px`; // Adjust 0.02 to scale the font size
+        }
+
         art.on("ready", () => {
             art.seek = customOption.lastFrameWatched;
+        });
+
+        art.on("resize", () => {
+            const newSize = calculateResponsiveFontSize();
+            art.subtitle.style({
+                fontSize: newSize
+            });
         });
 
         art.on("video:timeupdate", () => {
